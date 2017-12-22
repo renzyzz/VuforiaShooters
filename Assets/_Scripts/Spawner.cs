@@ -30,18 +30,22 @@ public class Spawner : MonoBehaviour {
         if (Countdown <= 0)
 
         {
-            Vector3 sposition = new Vector3(Random.Range(-2000.0f, 2000.0f), 204f, Random.Range(-2000.0f, 2000.0f));
-            Instantiate(Astero, sposition, Spawncube.transform.rotation);
-            Countdown = LifeTime;
-            if (danger % 3 == 0)
-            {
-                Vector3 sposition2 = new Vector3(Random.Range(-2000.0f, 2000.0f), 204f, Random.Range(-2000.0f, 2000.0f));
+            Vector3 sposition = new Vector3(Random.Range(Mathf.Clamp(-1500,-1500,-400 ), Mathf.Clamp(1500,400, 1500.0f)), 204f, Random.Range(Mathf.Clamp(-1500,-400, -1500.0f),Mathf.Clamp(1500,400, 1500.0f)));
+             Debug.Log(sposition.ToString("F4"));
+      
+                Instantiate(Astero, sposition, Spawncube.transform.rotation);
+                Countdown = LifeTime;
+                if (danger % 3 == 0)
+                {
+                    Vector3 sposition2 = new Vector3(Random.Range(Mathf.Clamp(-1500, -1500, -400), Mathf.Clamp(1500, 400, 1500.0f)), 204f, Random.Range(Mathf.Clamp(-1500, -400, -1500.0f), Mathf.Clamp(1500, 400, 1500.0f)));
+                   
 
-                Instantiate(Enemy, sposition2, Spawncube.transform.rotation);
+                    Instantiate(Enemy, sposition2, Spawncube.transform.rotation);
 
 
-            }
-            danger++;
+                }
+                danger++;
+                
         }
         else
         {
